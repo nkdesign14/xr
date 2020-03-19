@@ -1,50 +1,53 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
-    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-entity-generator-component@3.0.2/dist/aframe-entity-generator-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-randomizer-components@3.0.2/dist/aframe-randomizer-components.min.js"></script>
+  <meta charset="utf-8">
+  <title>Hello, WebVR! • Nemanja's A-Frame</title>
+  <meta name="description" content="Hello, WebVR! • A-Frame">
+  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+  <!-- add aframe extras -->
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 
 </head>
 
 <body>
-    <a-scene 
-     physics="gravity: -1">
-     <a-assets>
-      <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
-      <img id="skyTexture"
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
-    </a-assets>
-  
-      
-    <a-sky src="#skyTexture"></a-sky>
+  <a-scene>
+    <a-assets>
 
-        <a-assets>
-            <a-asset-item id="ship-obj" src="assets/models/space_ship/space_ship.obj"></a-asset-item>
-        </a-asset-item>
 
-  
-        <a-mixin id="model" obj-model="obj: #ship-obj" scale="1 1 1"></a-mixin>
+      <a-asset-item id="creature" src="assets/models/black_dragon/scene.gltf" position="0 -1 0">
+      </a-asset-item>
 
-        <a-mixin id="random-1" random-position="min: -5 -5 -5; max: 5 5 5" random-color  dynamic-body="linearDamping:.001 angularDamping:-1" ></a-mixin>
-
+      <a-asset-item id="creature2" src="assets/models/dragon_rig/scene.gltf" position="1 -2 3">
       </a-asset-item>
     </a-assets>
     <a-entity camera look-controls wasd-controls="acceleration:500" position="0 1 -1">
-        <a-entity camera
-                  position="0 1.6 0"
-                  look-controls="pointerLockEnabled: true">
-          <a-entity cursor
-                    position="0 0 -1"
-                    geometry="primitive: sphere; radius: 0.04;"
-                    material="color: #CCC; shader: flat;"></a-entity>
-        </a-entity>
+      <a-entity camera
+                position="15.805 1.6 3.736"
+                look-controls="pointerLockEnabled: true">
+        <a-entity cursor
+                  position="0 0 -1"
+                  geometry="primitive: sphere; radius: 0.04;"
+                  material="color: #CCC; shader: flat;"></a-entity>
       </a-entity>
+    </a-entity>
+    <a-entity id="elmo" geometry="primitive: box" position="15.805 1.916 3.736" material="src: elmo.png"
+    sound="src: url(roar.mp4); on: click"></a-entity>
 
 
-    <a-entity entity-generator="mixin: random-1 model; num: 200"></a-entity>
+    <a-gltf-model src="#creature" scale="0.001 0.001 0.001" position="15.805 1.916 3.736" rotation="0 84.244 0" animation-mixer></a-gltf-model>
+      
+      <a-gltf-model src="#creature2" scale="1 1 1" position="20.427 1.938 3.652" rotation="0 -92.686 0" animation-mixer></a-gltf-model>
 
-    </a-scene>
+    </a-gltf-model>
+    </a-gltf-model>
+  </a-gltf-model>
+
+  </a-scene>
 </body>
+
+</html>
+
+
+ 
